@@ -1,15 +1,18 @@
 import {
   Column,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToMany,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Grade } from './grade';
 import { Subject } from './subject';
 import { StudentToSubject } from './student-to-subject';
 import { StudentToCourse } from './student-to-course';
+import { User } from './user';
 
 @Entity()
 export class Student {
@@ -41,4 +44,8 @@ export class Student {
     (studentToCourse) => studentToCourse.student,
   )
   studentToCourse: StudentToCourse[];
+
+  @OneToOne(() => User)
+  @JoinColumn()
+  user: User;
 }

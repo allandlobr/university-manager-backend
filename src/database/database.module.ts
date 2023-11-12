@@ -7,6 +7,7 @@ import { Professor } from './entities/professor';
 import { Subject } from './entities/subject';
 import { StudentToCourse } from './entities/student-to-course';
 import { StudentToSubject } from './entities/student-to-subject';
+import { User } from './entities/user';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { StudentToSubject } from './entities/student-to-subject';
       password: 'youshallnotpass',
       database: 'devdb',
       entities: [
+        User,
         Student,
         Course,
         Grade,

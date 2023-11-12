@@ -1,11 +1,14 @@
 import {
   Column,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Subject } from './subject';
+import { User } from './user';
 
 @Entity()
 export class Professor {
@@ -26,4 +29,8 @@ export class Professor {
   @ManyToMany(() => Subject)
   @JoinTable({ name: 'professors_subjects' })
   subjects: Subject[];
+
+  @OneToOne(() => User)
+  @JoinColumn()
+  user: User;
 }
